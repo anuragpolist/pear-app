@@ -1,5 +1,10 @@
 // Topic: 5ce070f52a5f2e81499574e124c2f5587c0969c3d8e1dff0f59c349354aa5283
 
+// pear://xc7sxyf17hbi7dsn99917scd9nt5uah99qzp4ojpo4k9u9g6rxpo
+// pear run pear://xc7sxyf17hbi7dsn99917scd9nt5uah99qzp4ojpo4k9u9g6rxpo
+
+// pear://mgesxeepurrrr67obpnsk3d63yqzinmhhi5mqcj8oumiy9ctxe8y
+
 // For interactive documentation and code auto-completion in editor
 /** @typedef {import('pear-interface')} */ /* global Pear */
 // document.querySelector('h1').addEventListener('click', (e) => { e.target.innerHTML = '🍐' }) 
@@ -81,4 +86,11 @@ function onMessageAdded (from, message) {
   const $div = document.createElement('div')
   $div.textContent = `<${from}> ${message}`
   document.querySelector('#messages').appendChild($div)
+}
+
+if (Pear.config.dev) {
+    const { Inspector } = await import('pear-inspect')
+    const inspector = await new Inspector()
+    const key = await inspector.enable()
+    console.log('Debug with pear://runtime/devtools/' + key.toString('hex'))
 }
